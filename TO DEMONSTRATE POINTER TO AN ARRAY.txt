@@ -1,0 +1,16 @@
+#include <stdio.h>
+
+int main() {
+    int arr[5] = {10, 20, 30, 40, 50};  // Declare and initialize an array
+    int *ptr;                           // Declare a pointer to an integer
+    ptr = arr;                          // Point to the first element of the array
+
+    printf("Array elements accessed using pointer:\n");
+
+    // Access array elements using pointer
+    for (int i = 0; i < 5; i++) {
+        printf("Element %d: %d\n", i, *(ptr + i));
+    }
+
+    return 0;
+}

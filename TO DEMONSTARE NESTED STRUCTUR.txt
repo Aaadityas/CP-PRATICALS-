@@ -1,0 +1,67 @@
+#include <stdio.h>
+#include <string.h>
+
+// Define a structure for Address
+struct Address {
+    char street[50];
+    char city[30];
+    char state[30];
+    int zip_code;
+};
+
+// Define a structure for Student
+struct Student {
+    char name[50];
+    int roll_number;
+    float marks;
+    struct Address address; // Nested structure
+};
+
+int main() {
+    struct Student student; // Declare a student variable
+
+    // Input student details
+    printf("Enter student details:\n");
+
+    printf("Name: ");
+    fgets(student.name, sizeof(student.name), stdin);
+    student.name[strcspn(student.name, "\n")] = '\0'; // Remove trailing newline
+
+    printf("Roll Number: ");
+    scanf("%d", &student.roll_number);
+
+    printf("Marks: ");
+    scanf("%f", &student.marks);
+    getchar(); // To consume the newline character left by scanf
+
+    // Input address details
+    printf("Enter address details:\n");
+    
+    printf("Street: ");
+    fgets(student.address.street, sizeof(student.address.street), stdin);
+    student.address.street[strcspn(student.address.street, "\n")] = '\0'; // Remove trailing newline
+
+    printf("City: ");
+    fgets(student.address.city, sizeof(student.address.city), stdin);
+    student.address.city[strcspn(student.address.city, "\n")] = '\0'; // Remove trailing newline
+
+    printf("State: ");
+    fgets(student.address.state, sizeof(student.address.state), stdin);
+    student.address.state[strcspn(student.address.state, "\n")] = '\0'; // Remove trailing newline
+
+    printf("Zip Code: ");
+    scanf("%d", &student.address.zip_code);
+
+    // Displaying the student details
+    printf("\nStudent Details:\n");
+    printf("Name: %s\n", student.name);
+    printf("Roll Number: %d\n", student.roll_number);
+    printf("Marks: %.2f\n", student.marks);
+    printf("Address:\n");
+    printf("  Street: %s\n", student.address.street);
+    printf("  City: %s\n", student.address.city);
+    printf("  State: %s\n", student.address.state);
+    printf("  Zip Code: %d\n", student.address.zip_code);
+
+    return 0;
+}

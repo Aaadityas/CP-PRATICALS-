@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str1[50], str2[50];
+    char str3[100];
+
+    // Input strings from the user
+    printf("Enter the first string: ");
+    fgets(str1, sizeof(str1), stdin);
+    str1[strcspn(str1, "\n")] = '\0';  // Remove trailing newline
+
+    printf("Enter the second string: ");
+    fgets(str2, sizeof(str2), stdin);
+    str2[strcspn(str2, "\n")] = '\0';  // Remove trailing newline
+
+    // Demonstrate strlen function
+    printf("Length of first string: %lu\n", strlen(str1));
+    printf("Length of second string: %lu\n", strlen(str2));
+
+    // Demonstrate strcpy function
+    strcpy(str3, str1);
+    printf("Copy of first string: %s\n", str3);
+
+    // Demonstrate strcat function
+    strcat(str3, str2);
+    printf("Concatenation of first and second string: %s\n", str3);
+
+    // Demonstrate strcmp function
+    int cmpResult = strcmp(str1, str2);
+    if (cmpResult == 0) {
+        printf("The strings are equal.\n");
+    } else if (cmpResult < 0) {
+        printf("The first string is less than the second string.\n");
+    } else {
+        printf("The first string is greater than the second string.\n");
+    }
+
+    return 0;
+}

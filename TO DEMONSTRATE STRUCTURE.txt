@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <string.h>
+
+// Define a structure for a student
+struct Student {
+    char name[50];
+    int roll_number;
+    float marks;
+};
+
+int main() {
+    struct Student students[3]; // Array to hold 3 students
+
+    // Input data for each student
+    for (int i = 0; i < 3; i++) {
+        printf("Enter details for student %d:\n", i + 1);
+        
+        printf("Name: ");
+        fgets(students[i].name, sizeof(students[i].name), stdin);
+        students[i].name[strcspn(students[i].name, "\n")] = '\0'; // Remove trailing newline
+
+        printf("Roll Number: ");
+        scanf("%d", &students[i].roll_number);
+        
+        printf("Marks: ");
+        scanf("%f", &students[i].marks);
+        getchar(); // To consume the newline character left by scanf
+
+        printf("\n");
+    }
+
+    // Displaying the data of each student
+    printf("Student Details:\n");
+    for (int i = 0; i < 3; i++) {
+        printf("Student %d:\n", i + 1);
+        printf("Name: %s\n", students[i].name);
+        printf("Roll Number: %d\n", students[i].roll_number);
+        printf("Marks: %.2f\n", students[i].marks);
+        printf("\n");
+    }
+
+    return 0;
+}
